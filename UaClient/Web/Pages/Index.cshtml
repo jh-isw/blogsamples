@@ -1,0 +1,45 @@
+﻿@page
+@model IndexModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "OPC UA Web-Client";
+}
+
+<div class="text-center">
+    <h1 class="display-4">OPC UA Web-Client</h1>
+    <p>
+        @Model.Greet
+    </p>
+    <p>
+        Enter a OPC UA Server URL to find its endpoints.<br />
+        Leave empty, to use default: opc.tcp://localhost:4840
+    </p>
+    <div asp-validation-summary="All"></div>
+    <form method="POST">
+        <div class="form-group">
+            <label asp-for="OpcUaServerUrl"></label>
+            <input type="url" asp-for="OpcUaServerUrl" />
+            <span asp-validation-for="OpcUaServerUrl"></span>
+        </div>
+        <input type="submit" />
+    </form>
+    @if (Model.Endpoints.Count > 0)
+    {
+        <table>
+            <caption>@Model.Endpoints.Count Endpoints found</caption>
+            <tr>
+                <th>Endpoint URL</th>
+                <th>Security Policy</th>
+                <th>Security Mode</th>
+            </tr>
+            @foreach (var item in Model.Endpoints)
+            {
+                <tr>
+                    <td>@item[0]</td>
+                    <td>@item[1]</td>
+                    <td>@item[2]</td>
+                </tr>
+            }
+        </table>
+    }  
+</div>
