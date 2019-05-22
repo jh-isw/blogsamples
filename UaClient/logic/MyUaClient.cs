@@ -9,27 +9,6 @@ namespace logic
     {
         public static string Greet() => "MyUaClient Demonstrator Class";
 
-        // public static string GetEndpoints(string serverUri){
-        //     using (DiscoveryClient client = DiscoveryClient.Create(new Uri(serverUri)))
-        //     {
-        //         EndpointDescriptionCollection endpoints = client.GetEndpoints(null);
-
-        //         var builder = new StringBuilder();
- 
-        //         for (int ii = 0; ii < endpoints.Count; ii++)
-        //         {
-        //             builder.AppendFormat("Endpoint #{0}:", ii);
-        //             builder.Append(endpoints[ii].EndpointUrl);
-        //             builder.Append(endpoints[ii].SecurityPolicyUri.Substring(
-        //                 endpoints[ii].SecurityPolicyUri.LastIndexOf('#')+1));
-        //             builder.Append(endpoints[ii].SecurityMode.ToString()); // [None, Sign, SignAndEncrypt]
-        //         }
-
-        //         return builder.ToString();
-        //     }
-
-        // }
-
         public static List<List<string>> GetEndpoints(Uri uri){
             using (DiscoveryClient client = DiscoveryClient.Create(uri))
             {
@@ -43,12 +22,6 @@ namespace logic
 
                     for (int ii = 0; ii < endpoints.Count; ii++)
                     {
-                        // arrStrBuilder[ii] = new StringBuilder();
-                        // arrStrBuilder[ii].Append(endpoints[ii].EndpointUrl + ",");
-                        // arrStrBuilder[ii].Append(endpoints[ii].SecurityPolicyUri.Substring(
-                        //     endpoints[ii].SecurityPolicyUri.LastIndexOf('#')+1) + ",");
-                        // arrStrBuilder[ii].Append(endpoints[ii].SecurityMode.ToString());
-                        // lst.Add(arrStrBuilder[ii].ToString());
                         arrList[ii] = new List<string>();
                         arrList[ii].Add(endpoints[ii].EndpointUrl);
                         arrList[ii].Add(endpoints[ii].SecurityPolicyUri.Substring(
